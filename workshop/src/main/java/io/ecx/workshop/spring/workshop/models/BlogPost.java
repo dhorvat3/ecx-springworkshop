@@ -1,5 +1,7 @@
 package io.ecx.workshop.spring.workshop.models;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,10 +19,10 @@ public class BlogPost
     @Id
     @GeneratedValue
     private int id;
+    private String title;
     @Column(columnDefinition = "TEXT")
     private String content;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
     @JoinColumn(nullable = false, name = "userRefId", referencedColumnName = "id")
     private User user;
 
